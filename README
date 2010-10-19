@@ -5,4 +5,4 @@
 
 
 v0.1 Release
-This first release will incorporate two different modes, o whicne being a full version which will combine all files in the library, and a minified version which will only include the core files necessary to be able to use the library
+This first release will incorporate two different modes, one being a full version which will combine all files in the library, and a minified version which will only remove all whitespace within the library files
