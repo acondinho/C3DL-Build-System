@@ -1,0 +1,8 @@
+   _   _   _   _     _   _   _   _   _     _   _   _   _   _   _  
+  / \ / \ / \ / \   / \ / \ / \ / \ / \   / \ / \ / \ / \ / \ / \ 
+ ( C | 3 | D | L ) ( B | u | i | l | d ) ( S | y | s | t | e | m )
+  \_/ \_/ \_/ \_/   \_/ \_/ \_/ \_/ \_/   \_/ \_/ \_/ \_/ \_/ \_/ 
+
+
+v0.1 Release
+This first release will incorporate two different modes, o whicne being a full version which will combine all files in the library, and a minified version which will only include the core files necessary to be able to use the library

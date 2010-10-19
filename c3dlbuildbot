@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Run file exist check to make sure all files are there and accessible
+if [ "$#" -eq 0 ] 
+then
+	echo "No parameters supplied to the almight build system" > c3dlapi.js
+else
+	if [ "$1" = "full" ]; 
+	then
+		#This will include all files in the library
+		#cat file1 file2 > c3dlapi.js
+	elif [ "$1" = "minified" ]; 
+	then
+		#This will include only core files from the library
+		#cat file1 file2 file3 > c3dlapi.js
+	else
+		echo "Incorrect parameters supplied to the almight build system" > c3dlapi.js
+	fi
+fi
