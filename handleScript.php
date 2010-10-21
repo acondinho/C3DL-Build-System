@@ -4,6 +4,7 @@
 		
 		Interpret HTML parameters and pass arguments to shell script for output.
 	*/
+	error_reporting(E_ALL);
 	if (isset($_GET['submitBtn'])) {
 		$result = array();
 		$fileName = "c3dlapi";
@@ -22,7 +23,7 @@
 		
 		// Pass arguments to shell script, which builds library
 		// Shell script outputs to stdout, which is redirected to browser
-		passthru("./c3dlbuildbot $minify");
+		passthru("./c3dlbuildbot $minifyArg");
 	} else
 		echo "Button not pressed";
 ?>
