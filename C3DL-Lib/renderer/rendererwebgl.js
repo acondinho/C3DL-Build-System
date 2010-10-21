@@ -498,9 +498,6 @@ c3dl.WebGL = function ()
     // enable the depth buffer, only needs to be done once, so do it here		
     glCanvas3D.enable(glCanvas3D.DEPTH_TEST);
 
-    // we need to define this ourselves since it is not present in canvas 3d 0.4.3
-    this.enable(c3dl.VERTEX_PROGRAM_POINT_SIZE);
-
     // create the shader programs
     //this.geometryShader = this.createProgram(c3dl.material_vs+c3dl.light_vs+c3dl.model_vs, c3dl.model_fs).getProgramID();
     this.particleSystemShader = this.createProgram(c3dl.psys_vs, c3dl.psys_fs).getProgramID();
@@ -573,6 +570,7 @@ c3dl.WebGL = function ()
     // CARTOON
     c3dl.effects.CARTOON = new c3dl.EffectTemplate();
     c3dl.effects.CARTOON.addVertexShader(c3dl.cartoon_vs);
+    c3dl.effects.CARTOON.addFragmentShader("#ifdef GL_ES \n precision highp float; \n #endif \n ");
     c3dl.effects.CARTOON.addFragmentShader(c3dl.light_vs);
     c3dl.effects.CARTOON.addFragmentShader(c3dl.cartoon_fs);
     c3dl.effects.CARTOON.setRenderingCallback(c3dl.cartoon_callback);
@@ -583,6 +581,7 @@ c3dl.WebGL = function ()
     // GOOCH
     c3dl.effects.GOOCH = new c3dl.EffectTemplate();
     c3dl.effects.GOOCH.addVertexShader(c3dl.gooch_vs);
+    c3dl.effects.GOOCH.addFragmentShader("#ifdef GL_ES \n precision highp float; \n #endif \n ");
     c3dl.effects.GOOCH.addFragmentShader(c3dl.light_vs);
     c3dl.effects.GOOCH.addFragmentShader(c3dl.gooch_fs);
     c3dl.effects.GOOCH.setRenderingCallback(c3dl.gooch_callback);
@@ -943,11 +942,10 @@ c3dl.WebGL = function ()
    @param {Array} pointPositions
    @param {Array} pointColors
    @param {Array} attenuation
-   @param {bool} pointSmooth
    @param {int} mode
    @param {float} size
    */
-  this.renderPoints = function (pointPositions, pointColors, attenuation, pointSmooth, mode, size)
+  this.renderPoints = function (pointPositions, pointColors, attenuation, mode, size)
   {
     // trying to render an empty list will result in an WebGL error
     if (pointPositions.length > 0 && pointColors.length > 0)
@@ -963,10 +961,6 @@ c3dl.WebGL = function ()
         c3dl.matrixMode(c3dl.PROJECTION);
         var projectionMatrix = c3dl.peekMatrix();
         c3dl.matrixMode(c3dl.MODELVIEW);
-
-        // if point smoothing is on, points will be rendered as circles, 
-        // otherwise they will be rendered as squares.
-        pointSmooth ? this.enable(c3dl.POINT_SMOOTH) : this.disable(c3dl.POINT_SMOOTH);
 
         // create a ModelViewProjection matrix.  By doing this, we can multiply
         // 3 matrices together once instead of once per point
@@ -1051,26 +1045,8 @@ c3dl.WebGL = function ()
    @param {int} shader
    @param {String} varName
    @param {int} size
-   @param {Array} array
+   @param vbo
    */
-/*this.setVertexAttribArray = function(shader, varName, size, array, vbo)
-	{
-		var attribLoc = glCanvas3D.getAttribLocation(shader, varName);
-
-		if(attribLoc != c3dl.SHADER_VAR_NOT_FOUND)
-		{
-			glCanvas3D.bindBuffer(glCanvas3D.ARRAY_BUFFER, vbo);
-			glCanvas3D.vertexAttribPointer(attribLoc, size, glCanvas3D.FLOAT, false, 0, 0);
-			glCanvas3D.enableVertexAttribArray(attribLoc);
-		}
-		else
-		{
-			c3dl.debug.logError("Attribute variable '" +  varName + "' not found in shader with ID = " + shader);
-		}
-	}*/
-
-
-
   this.setVertexAttribArray = function (shader, varName, size, vbo)
   {
     var attribLoc = glCanvas3D.getAttribLocation(shader, varName);

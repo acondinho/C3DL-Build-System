@@ -42,7 +42,6 @@ c3dl.Scene = function ()
   // the flexibility to have different factors for each scene.
   var pointAttenuation = c3dl.makeVector(1, 0, 0);
   var pointSize = 5;
-  var pointSmoothing = true;
 
   // default point rendering to spheres to prevent possible crashing
   // when users render points which playing a DVD on OS X.
@@ -133,18 +132,6 @@ c3dl.Scene = function ()
   this.getPointAttenuation = function ()
   {
     return [pointAttenuation[0], pointAttenuation[1], pointAttenuation[2]];
-  }
-
-  /**
-   If point smoothing is on, points are rendered as circles, otherwise they are rendered as
-   squares.
-   
-   @returns {bool} true if points will be rendered as circles, false if points are rendered as
-   squares.
-   */
-  this.getPointSmooth = function ()
-  {
-    return pointSmoothing;
   }
 
   /**
@@ -411,17 +398,6 @@ c3dl.Scene = function ()
       pointAttenuation[1] = attn[1];
       pointAttenuation[2] = attn[2];
     }
-  }
-
-  /**
-   If point smoothing is on, points are rendered as circles, otherwise they are rendered as
-   squares.
-   
-   @returns {bool} true if points are rendered as circles, false if points are rendered as squares.
-   */
-  this.setPointSmooth = function (smooth)
-  {
-    pointSmoothing = smooth;
   }
 
   /**		
@@ -1270,8 +1246,7 @@ c3dl.Scene = function ()
       }
     }
 
-    renderer.renderPoints(pointPositions, pointColors, pointAttenuation, this.getPointSmooth(), this.getPointRenderingMode(), pointSize);
-
+    renderer.renderPoints(pointPositions, pointColors, pointAttenuation, this.getPointRenderingMode(), pointSize);
 
     // LINES
     // collect all the lines from the scene, place them into this array
