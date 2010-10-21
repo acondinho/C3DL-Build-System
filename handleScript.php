@@ -13,6 +13,7 @@
 		// Client requestts minified version
 		if(isset($_GET['getMini'])) {
 			$minifyArg = "minified";
+			$fileName .= "-min";
 		}
 		
 		// We'll be outputting a js file
@@ -21,9 +22,19 @@
 		// It will be called c3dl.js (possibly c3dl-min.js
 		header('Content-Disposition: attachment; filename="'.$fileName.'.js"');
 		
+		//build absolute path
+		$currDir = exec('pwd');
+		$cmd = $currDir."/c3dlbuildbot ".$minifyArg;
+		$retVal;
+		
 		// Pass arguments to shell script, which builds library
 		// Shell script outputs to stdout, which is redirected to browser
-		passthru("./c3dlbuildbot $minifyArg");
+		passthru($cmd, $retVal);
+		
+		if ($retVal !== 0) {
+			echo "Error Code: $retVal";
+			echo "\nCommand String: $cmd";
+		}
 	} else
 		echo "Button not pressed";
 ?>
