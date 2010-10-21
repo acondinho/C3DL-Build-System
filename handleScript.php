@@ -1,4 +1,9 @@
 <?php
+	/*
+		Web Interface for C3DL Build System
+		
+		Interpret HTML parameters and pass arguments to shell script for output.
+	*/
 	if (isset($_GET['submitBtn'])) {
 		$result = array();
 		$fileName = "c3dlapi";
@@ -13,9 +18,11 @@
 		header('Content-type: application/javascript');
 
 		// It will be called c3dl.js (possibly c3dl-min.js
-		passthru("./c3dlbuildbot $minify");
 		header('Content-Disposition: attachment; filename="'.$fileName.'.js"');
-
+		
+		// Pass arguments to shell script, which builds library
+		// Shell script outputs to stdout, which is redirected to browser
+		passthru("./c3dlbuildbot $minify");
 	} else
 		echo "Button not pressed";
 ?>
