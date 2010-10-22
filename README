@@ -6,3 +6,13 @@
 
 v0.1 Release
 This first release will incorporate two different modes, one being a full version which will combine all files in the library, and a minified version which will only remove all whitespace within the library files
+
+How to run this release
+- Download all files off the github repository using the download link
+- Either extract to a linux distro or upload to a linux server
+- Set proper permissions (chmod 755) for the c3dlbuildbot file
+- Run the webUI.html file through a browser
+- Once the library has been downloaded import it into whatever c3dl web page you would like to use it on
+
+*You must be using a webgl enabled browser*
+*Turn off shader validation in about:config -- search for webgl and set the validation to false*
