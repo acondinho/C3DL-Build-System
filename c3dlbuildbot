@@ -134,7 +134,9 @@ buildFull()
 
 buildStripped()
 {
-	echo "Building Stripped" > test
+	jsmin <c3dlapi.js >c3dlapi-min.js
+	rm c3dlapi.js
+	mv c3dlapi-min.js c3dlapi.js
 }
 
 # Main Code Block
@@ -147,11 +149,12 @@ else
 		buildFull
 	elif [ "$1" = "minified" ]; 
 	then
+		buildFull
 		buildStripped
 	else
 		echo "Incorrect parameters supplied to the almighty build system" > c3dlapi.js
 	fi
 
-cat c3dlapi.js
+
 
 fi

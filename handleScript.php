@@ -13,7 +13,6 @@
 		// Client requestts minified version
 		if(isset($_GET['getMini'])) {
 			$minifyArg = "minified";
-			$fileName .= "-min";
 		}
 		
 		// We'll be outputting a js file
