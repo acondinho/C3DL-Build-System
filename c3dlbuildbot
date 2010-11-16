@@ -155,6 +155,6 @@ else
 		echo "Incorrect parameters supplied to the almighty build system" > c3dlapi.js
 	fi
 
-
+cat c3dlapi.js
 
 fi
