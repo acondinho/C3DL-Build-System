@@ -2,7 +2,7 @@
 #####################################
 # C3DL Build Bot                    #
 # Created: 10/19/2010               #
-# Modified on: 10/21/2010           #
+# Modified on: 11/16/2010           #
 #                                   #
 # Created by: Andrew Condinho       #
 # Modified by: Andrew Condinho      #
@@ -101,34 +101,38 @@ buildMains()
 	cat C3DL-Lib/c3dlnamespace.js C3DL-Lib/constants.js C3DL-Lib/debug.js C3DL-Lib/init.js C3DL-Lib/material.js C3DL-Lib/matrixstack.js C3DL-Lib/scene.js > mainsAPI.js
 }
 
+buildMainsNoDebug()
+{
+	cat C3DL-Lib/c3dlnamespace.js C3DL-Lib/constants.js C3DL-Lib/init.js C3DL-Lib/material.js C3DL-Lib/matrixstack.js C3DL-Lib/scene.js > mainsAPI.js
+}
+
 # Build functions
 buildFull()
 {
 	# Here is where you make the switch! comment out up to the cat mainsAPI.js... line and uncomment following the batman statement.
 
 	# test individual build systems
-	#buildMains
-	#buildActors
-	#buildCamera
-	#buildCollada
-	#buildEffects
-	#buildEnclosure
-	#buildFrustCull
-	#buildInteraction
-	#buildLight
-	#buildMath
-	#buildParticleSys
-	#buildRenderer
-	#buildScenegraph
-	#buildShaders
-	#buildTexture
-	#buildUtilities
+	buildActors
+	buildCamera
+	buildCollada
+	buildEffects
+	buildEnclosure
+	buildFrustCull
+	buildInteraction
+	buildLight
+	buildMath
+	buildParticleSys
+	buildRenderer
+	buildScenegraph
+	buildShaders
+	buildTexture
+	buildUtilities
 	
 	# Build one file from these new cats
-	#cat mainsAPI.js actorAPI.js cameraAPI.js colladaAPI.js effectsAPI.js enclosureAPI.js frustumcullingAPI.js interactionAPI.js lightAPI.js mathAPI.js particleSysAPI.js rendererAPI.js scenegraphAPI.js shadersAPI.js textureAPI.js utilitiesAPI.js > c3dlapi.js
+	cat mainsAPI.js actorAPI.js cameraAPI.js colladaAPI.js effectsAPI.js enclosureAPI.js frustumcullingAPI.js interactionAPI.js lightAPI.js mathAPI.js particleSysAPI.js rendererAPI.js scenegraphAPI.js shadersAPI.js textureAPI.js utilitiesAPI.js > c3dlapi.js
 
 	# Holy Concatenation batman
-	cat C3DL-Lib/c3dlnamespace.js C3DL-Lib/constants.js C3DL-Lib/effects/effect_docs.js C3DL-Lib/debug.js C3DL-Lib/renderer/renderer.js C3DL-Lib/renderer/rendererwebgl.js C3DL-Lib/renderer/programobject.js C3DL-Lib/math/mjs.js C3DL-Lib/math/mathutils.js C3DL-Lib/math/vector.js C3DL-Lib/math/matrix.js C3DL-Lib/math/quaternion.js C3DL-Lib/matrixstack.js C3DL-Lib/camera/camera.js C3DL-Lib/camera/freecamera.js C3DL-Lib/camera/orbitcamera.js C3DL-Lib/enclosure/boundingsphere.js C3DL-Lib/enclosure/visualboundingsphere.js C3DL-Lib/enclosure/boundingbox.js C3DL-Lib/actors/actor.js C3DL-Lib/actors/primitive.js C3DL-Lib/actors/point.js C3DL-Lib/actors/line.js C3DL-Lib/frustum_culling/frustum.js C3DL-Lib/frustum_culling/plane.js C3DL-Lib/scene.js C3DL-Lib/texture/texture.js C3DL-Lib/texture/texturemanager.js C3DL-Lib/texture/textureutils.js C3DL-Lib/collada/colladamanager.js C3DL-Lib/collada/colladaloader.js C3DL-Lib/collada/colladaqueue.js C3DL-Lib/collada/geometry.js C3DL-Lib/collada/primitiveset.js C3DL-Lib/light/light.js C3DL-Lib/light/positionallight.js C3DL-Lib/light/directionallight.js C3DL-Lib/light/spotlight.js C3DL-Lib/material.js C3DL-Lib/collada/collada.js C3DL-Lib/scenegraph/scenenode.js C3DL-Lib/utilities/utilities.js C3DL-Lib/shaders/model/light/light_vs.js C3DL-Lib/shaders/model/material/material.js C3DL-Lib/shaders/model/standard/model_fs.js C3DL-Lib/shaders/model/standard/model_vs.js C3DL-Lib/shaders/model/standard/std_callback.js C3DL-Lib/shaders/particle_system/psys_vs.js C3DL-Lib/shaders/particle_system/psys_fs.js C3DL-Lib/shaders/point/point/point_vs.js C3DL-Lib/shaders/point/point/point_fs.js C3DL-Lib/shaders/point/sphere/point_sphere_vs.js C3DL-Lib/shaders/point/sphere/point_sphere_fs.js C3DL-Lib/shaders/line/line_vs.js C3DL-Lib/shaders/line/line_fs.js C3DL-Lib/shaders/bounding_sphere/bounding_sphere_vs.js C3DL-Lib/shaders/bounding_sphere/bounding_sphere_fs.js C3DL-Lib/shaders/model/greyscale/greyscale_vs.js C3DL-Lib/shaders/model/greyscale/greyscale_fs.js C3DL-Lib/shaders/model/greyscale/greyscale_callback.js C3DL-Lib/shaders/model/sepia/sepia_vs.js C3DL-Lib/shaders/model/sepia/sepia_fs.js C3DL-Lib/shaders/model/sepia/sepia_callback.js C3DL-Lib/shaders/model/cartoon/cartoon_vs.js C3DL-Lib/shaders/model/cartoon/cartoon_fs.js C3DL-Lib/shaders/model/cartoon/cartoon_callback.js C3DL-Lib/shaders/model/gooch/gooch_vs.js C3DL-Lib/shaders/model/gooch/gooch_fs.js C3DL-Lib/shaders/model/gooch/gooch_callback.js C3DL-Lib/shaders/model/solid_color/solid_color_vs.js C3DL-Lib/shaders/model/solid_color/solid_color_fs.js C3DL-Lib/shaders/model/solid_color/solid_color_callback.js C3DL-Lib/effects/effecttemplate.js C3DL-Lib/effects/effect.js C3DL-Lib/particle_system/particlesystem.js C3DL-Lib/particle_system/particle.js C3DL-Lib/init.js C3DL-Lib/interaction/picking.js C3DL-Lib/interaction/pickingresult.js > c3dlapi.js
+	#cat C3DL-Lib/c3dlnamespace.js C3DL-Lib/constants.js C3DL-Lib/effects/effect_docs.js C3DL-Lib/debug.js C3DL-Lib/renderer/renderer.js C3DL-Lib/renderer/rendererwebgl.js C3DL-Lib/renderer/programobject.js C3DL-Lib/math/mjs.js C3DL-Lib/math/mathutils.js C3DL-Lib/math/vector.js C3DL-Lib/math/matrix.js C3DL-Lib/math/quaternion.js C3DL-Lib/matrixstack.js C3DL-Lib/camera/camera.js C3DL-Lib/camera/freecamera.js C3DL-Lib/camera/orbitcamera.js C3DL-Lib/enclosure/boundingsphere.js C3DL-Lib/enclosure/visualboundingsphere.js C3DL-Lib/enclosure/boundingbox.js C3DL-Lib/actors/actor.js C3DL-Lib/actors/primitive.js C3DL-Lib/actors/point.js C3DL-Lib/actors/line.js C3DL-Lib/frustum_culling/frustum.js C3DL-Lib/frustum_culling/plane.js C3DL-Lib/scene.js C3DL-Lib/texture/texture.js C3DL-Lib/texture/texturemanager.js C3DL-Lib/texture/textureutils.js C3DL-Lib/collada/colladamanager.js C3DL-Lib/collada/colladaloader.js C3DL-Lib/collada/colladaqueue.js C3DL-Lib/collada/geometry.js C3DL-Lib/collada/primitiveset.js C3DL-Lib/light/light.js C3DL-Lib/light/positionallight.js C3DL-Lib/light/directionallight.js C3DL-Lib/light/spotlight.js C3DL-Lib/material.js C3DL-Lib/collada/collada.js C3DL-Lib/scenegraph/scenenode.js C3DL-Lib/utilities/utilities.js C3DL-Lib/shaders/model/light/light_vs.js C3DL-Lib/shaders/model/material/material.js C3DL-Lib/shaders/model/standard/model_fs.js C3DL-Lib/shaders/model/standard/model_vs.js C3DL-Lib/shaders/model/standard/std_callback.js C3DL-Lib/shaders/particle_system/psys_vs.js C3DL-Lib/shaders/particle_system/psys_fs.js C3DL-Lib/shaders/point/point/point_vs.js C3DL-Lib/shaders/point/point/point_fs.js C3DL-Lib/shaders/point/sphere/point_sphere_vs.js C3DL-Lib/shaders/point/sphere/point_sphere_fs.js C3DL-Lib/shaders/line/line_vs.js C3DL-Lib/shaders/line/line_fs.js C3DL-Lib/shaders/bounding_sphere/bounding_sphere_vs.js C3DL-Lib/shaders/bounding_sphere/bounding_sphere_fs.js C3DL-Lib/shaders/model/greyscale/greyscale_vs.js C3DL-Lib/shaders/model/greyscale/greyscale_fs.js C3DL-Lib/shaders/model/greyscale/greyscale_callback.js C3DL-Lib/shaders/model/sepia/sepia_vs.js C3DL-Lib/shaders/model/sepia/sepia_fs.js C3DL-Lib/shaders/model/sepia/sepia_callback.js C3DL-Lib/shaders/model/cartoon/cartoon_vs.js C3DL-Lib/shaders/model/cartoon/cartoon_fs.js C3DL-Lib/shaders/model/cartoon/cartoon_callback.js C3DL-Lib/shaders/model/gooch/gooch_vs.js C3DL-Lib/shaders/model/gooch/gooch_fs.js C3DL-Lib/shaders/model/gooch/gooch_callback.js C3DL-Lib/shaders/model/solid_color/solid_color_vs.js C3DL-Lib/shaders/model/solid_color/solid_color_fs.js C3DL-Lib/shaders/model/solid_color/solid_color_callback.js C3DL-Lib/effects/effecttemplate.js C3DL-Lib/effects/effect.js C3DL-Lib/particle_system/particlesystem.js C3DL-Lib/particle_system/particle.js C3DL-Lib/init.js C3DL-Lib/interaction/picking.js C3DL-Lib/interaction/pickingresult.js > c3dlapi.js
 
 }
 
@@ -144,6 +148,18 @@ if [ "$#" -eq 0 ]
 then
 	echo "No parameters supplied to the almighty build system" > c3dlapi.js
 else
+	# Check for whether or not to include debugging in mains
+	if [ "$2" = "debug" ]
+	then
+		buildMains
+	elif [ "$2" = "nodebug" ]
+	then
+		buildMainsNoDebug
+	else
+		#Default just build everything
+		buildMains
+	fi
+	
 	if [ "$1" = "full" ]; 
 	then
 		buildFull

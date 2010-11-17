@@ -9,10 +9,16 @@
 		$result = array();
 		$fileName = "c3dlapi";
 		$minifyArg = "full";
+		$debugArg = "debug";
 
 		// Client requestts minified version
 		if(isset($_GET['getMini'])) {
 			$minifyArg = "minified";
+		}
+		
+		if(isset($_GET['getDebug']))
+		{
+			$debugArg = "nodebug";
 		}
 		
 		// We'll be outputting a js file
@@ -23,7 +29,7 @@
 		
 		//build absolute path
 		$currDir = exec('pwd');
-		$cmd = $currDir."/c3dlbuildbot ".$minifyArg;
+		$cmd = $currDir."/c3dlbuildbot ".$minifyArg." ".$debugArg;
 		$retVal;
 		
 		// Pass arguments to shell script, which builds library

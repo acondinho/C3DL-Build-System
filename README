@@ -3,6 +3,8 @@
  ( C | 3 | D | L ) ( B | u | i | l | d ) ( S | y | s | t | e | m )
   \_/ \_/ \_/ \_/   \_/ \_/ \_/ \_/ \_/   \_/ \_/ \_/ \_/ \_/ \_/ 
 
+v0.2 Release
+The second release of this build system now allows you to specify whether or not you want to include debugging utilities when downloading the C3DL library. The bash script now accepts a second argument either via command-line or through the web interface of "debug" or "nodebug", if none is specified the system will automatically include the debugging utilities just in case.
 
 v0.1 Release
 This first release will incorporate two different modes, one being a full version which will combine all files in the library, and a minified version which will only remove all whitespace within the library files
