@@ -70,7 +70,9 @@ c3dl.Point = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logWarning("invalid value passed to Point::setPosition()");
+//closecomment
     }
   }
 
@@ -98,7 +100,9 @@ c3dl.Point = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logWarning("invalid value passed to Point::setColor()");
+//closecomment
     }
   }
 

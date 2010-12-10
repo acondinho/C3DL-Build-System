@@ -204,8 +204,10 @@ c3dl.Material = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logWarning("Invalid argument passed to material set* method." + 
         "Color values must be arrays with exactly 3 elements.");
+//closecomment
       return false;
     }
   }

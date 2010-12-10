@@ -216,8 +216,9 @@ c3dl.Collada.prototype.update = function (timeStep) {
 
     }
     else {
+//startcomment
         c3dl.debug.logError('You must call addModel("' + this.path + '"); before canvasMain.');
-
+//closecomment
         if (c3dl.ColladaManager.isFileLoaded(this.path)) {
             // get a copy of the scenegraph so we can modify it.
             this.sceneGraph = c3dl.ColladaManager.getSceneGraphCopy(this.path);

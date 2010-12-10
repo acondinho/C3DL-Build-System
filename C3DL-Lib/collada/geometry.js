@@ -145,7 +145,9 @@ c3dl.Geometry = function () {
    */
   this.render = function (glCanvas3D, scene) {
     if (glCanvas3D == null) {
+//startcomment
       c3dl.debug.logWarning('Geometry::render() called with a null glCanvas3D');
+//closecomment
       return false;
     }
     if (this.getPrimitiveSets()[0].getType() === "lines") {

@@ -329,7 +329,9 @@ var kInv =  new C3DL_FLOAT_ARRAY(16);
  	// Account for a very small value
 	if (Math.abs(fDet) <= 1e-9)
  	{
+//startcomment
  	  c3dl.debug.logWarning('inverseMatrix() failed due to bad values');
+//closecomment
    	  return null;
 	} 
 	kInv[ 0] = + mat[ 5] * fB5 - mat[ 6] * fB4 + mat[ 7] * fB3;

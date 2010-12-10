@@ -18,8 +18,10 @@ c3dl.hasCorrectDimensions = function (texture)
   // textures cannot have size 0 or 1.
   if (texture.width <= 1 || texture.height <= 1)
   {
+//startcomment
     c3dl.debug.logWarning('Texture ' + texture.src + ' is too small.' + 'Dimensions are: ' +
     texture.width + "x" + texture.height + ". " + '<br/>Texture was resized.');
+//closecomment
   }
 
   // Texture width and height must be a power of 2. By performing a 
@@ -31,10 +33,12 @@ c3dl.hasCorrectDimensions = function (texture)
   // etc..
   else if ((texture.width & (texture.width - 1)) || (texture.height & (texture.height - 1)))
   {
+//startcomment
     c3dl.debug.logWarning('Texture ' + texture.src + ' must have a width and height of a power of 2.' + 
     'Dimensions are: ' + texture.width + "x" + texture.height + ". " + 
     'Dimensions must be something like: 2x2, 2x4, 4x4, 4x8, 8x8, 16x8, 16x16, etc..' + 
     '<br />Texture has been resized.');
+//closecomment
   }
 
   // if we didn't satisfy any of the conditionals, texture 

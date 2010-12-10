@@ -2,7 +2,7 @@
 #####################################
 # C3DL Build Bot                    #
 # Created: 10/19/2010               #
-# Modified on: 12/2/2010            #
+# Modified on: 12/10/2010            #
 #                                   #
 # Created by: Andrew Condinho       #
 # Modified by: Andrew Condinho      #
@@ -142,6 +142,8 @@ else
 		elif [ "$2" = "nodebug" ]
 		then
 			buildNoDebug
+			perl -p -i -e "s/\/\/startcomment/\/*commenty/g" c3dlapi.js
+			perl -p -i -e "s/\/\/closecomment/commenty*\//g" c3dlapi.js
 		else
 			buildFull
 		fi
@@ -153,6 +155,8 @@ else
 		elif [ "$2" = "nodebug" ]
 		then
 			buildNoDebug
+			perl -p -i -e "s/\/\/startcomment/\/*commenty/g" c3dlapi.js
+			perl -p -i -e "s/\/\/closecomment/commenty*\//g" c3dlapi.js
 		else
 			buildFull
 		fi

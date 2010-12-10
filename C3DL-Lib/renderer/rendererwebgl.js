@@ -154,7 +154,9 @@ c3dl.WebGL = function ()
     // it is possible createProgram failed.
     if (program == null)
     {
+//startcomment
       c3dl.debug.logError("failed to create shader program");
+//closecomment
       return null;
     }
 
@@ -167,7 +169,9 @@ c3dl.WebGL = function ()
     // The compilation status of each shader can be queried.
     if (!gl.getShaderParameter(vertShader, gl.COMPILE_STATUS))
     {
+//startcomment
       c3dl.debug.logError("vert shader: " + gl.getShaderInfoLog(vertShader));
+//closecomment
       gl.deleteShader(vertShader);
       return null;
     }
@@ -182,7 +186,9 @@ c3dl.WebGL = function ()
     // The compilation status of each shader can be queried.
     if (!gl.getShaderParameter(vertShader, gl.COMPILE_STATUS))
     {
+//startcomment
       c3dl.debug.logError("frag shader " + gl.getShaderInfoLog(vertShader));
+//closecomment
       gl.deleteShader(vertShader);
       return null;
     }
@@ -201,7 +207,9 @@ c3dl.WebGL = function ()
     // Check if the shaders were linked successfully.
     if (gl.getProgramParameter(program, gl.LINK_STATUS) != 1)
     {
+//startcomment
       c3dl.debug.logError(gl.getProgramInfoLog(program));
+//closecomment
       gl.deleteProgram(program);
       return null;
     }
@@ -309,8 +317,10 @@ c3dl.WebGL = function ()
     // the toon shader uses lights, but does not use
     // the ambient light. We need to turn off debugger to
     // suppress any errors.
+//startcomment
     var prevVal = c3dl.debug.getVisible();
     c3dl.debug.setVisible(false);
+//closecomment
 
     for (var i = 0, len = this.programsWithLights.length; i < len; i++)
     {
@@ -320,10 +330,12 @@ c3dl.WebGL = function ()
     }
 
     // turn it back on if it was on before.
+//startcomment
     if (prevVal == true)
     {
       c3dl.debug.setVisible(true);
     }
+//closecomment
   }
 
   /**
@@ -448,6 +460,7 @@ c3dl.WebGL = function ()
    */
   this.createRenderer = function (cvs)
   {
+//startcomment
     if (c3dl.debug.DUMMY)
     {
       glCanvas3D =
@@ -460,6 +473,7 @@ c3dl.WebGL = function ()
     }
     else
     {
+//closecomment
       try
       {
         glCanvas3D = cvs.getContext('experimental-webgl');
@@ -468,7 +482,9 @@ c3dl.WebGL = function ()
       catch (err)
       {
       }
+//startcomment
     }
+//closecomment
 
     return glCanvas3D ? true : false;
   }
@@ -707,9 +723,11 @@ c3dl.WebGL = function ()
         }
         else
         {
+//startcomment
           c3dl.debug.logWarning("could not compile effect shader(s).");
           c3dl.debug.logInfo(joinedVertexShaders);
           c3dl.debug.logInfo(joinedFragmentShaders);
+//closecomment
         }
       }
       // if the effect has already been compiled, go ahead and render the geometry.
@@ -1059,7 +1077,9 @@ c3dl.WebGL = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logError("Attribute variable '" + varName + "' not found in shader with ID = " + shader);
+//closecomment
     }
   }
 
@@ -1093,7 +1113,9 @@ c3dl.WebGL = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logError("Uniform matrix variable '" + varName + "' not found in program object.");
+//closecomment
     }
   }
 
@@ -1143,7 +1165,9 @@ c3dl.WebGL = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logError('Uniform variable "' + varName + '" not found in program object.');
+//closecomment
     }
   }
 
@@ -1194,7 +1218,9 @@ c3dl.WebGL = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logError('Uniform variable "' + varName + '" not found in program object.');
+//closecomment
     }
   }
 
@@ -1215,14 +1241,18 @@ c3dl.WebGL = function ()
       }
       else
       {
+//startcomment
         c3dl.debug.logWarning("Enable command passed undefined value.");
+//closecomment
       }
     }
     catch (e)
     {
+//startcomment
       c3dl.debug.logException("Exception name:" + e.name +
         "<br />" + "Exception msg: " + e.message + "<br />" +
         "Capability: " + capability);
+//closecomment
     }
   }
 
@@ -1245,7 +1275,9 @@ c3dl.WebGL = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logWarning("disable command passed undefined value.");
+//closecomment
     }
   }
 }

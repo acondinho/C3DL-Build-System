@@ -48,7 +48,9 @@ c3dl.ColladaLoader = function ()
     }
     catch (err)
     {
+//startcomment
       c3dl.debug.logWarning("Could not find file '" + relativePath + "'. Check the path.");
+//closecomment
     }
 
     /**
@@ -712,7 +714,9 @@ c3dl.ColladaLoader = function ()
       // If this message is ever seen, that means I have to write the case for it.
       else
       {
+//startcomment
         c3dl.debug.logError(collations[currColl].nodeName + " collation element is not yet supported");
+//closecomment
       }
 
       // At this point, we finished getting the faces for one collation element, the integers which will index

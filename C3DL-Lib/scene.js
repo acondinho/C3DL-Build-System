@@ -261,13 +261,17 @@ c3dl.Scene = function ()
   {
     if (isNaN(indxNum))
     {
+//startcomment
       c3dl.debug.logWarning("Scene::getObj() called with a parameter that's not a number");
+//closecomment
       return null;
     }
     // Check if the index that was asked for is inside the bounds of our array
     if (indxNum < 0 || indxNum >= objList.length)
     {
+//startcomment
       c3dl.debug.logWarning("Scene::getObj() called with " + indxNum + ", which is not betwen 0 and " + objList.length);
+//closecomment
       return null;
     }
 
@@ -364,7 +368,9 @@ c3dl.Scene = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logWarning("scene's setPickingCallback() was passed an invalid callback function");
+//closecomment
     }
   }
 
@@ -447,7 +453,9 @@ c3dl.Scene = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.Warning("Scene::setSkyModel() Inavlid argument passed, was not c3dl.Collada.");
+//closecomment
     }
   }
 
@@ -492,7 +500,9 @@ c3dl.Scene = function ()
     canvasTag = document.getElementById(canvasTagID);
     if (canvasTag == null)
     {
+//startcomment
       c3dl.debug.logWarning('Scene::setCanvasTag() No canvas tag with name ' + canvasTagID + ' was found.');
+//closecomment
     }
   }
 
@@ -517,8 +527,9 @@ c3dl.Scene = function ()
       camera = cam;
       return true;
     }
-
+//startcomment
     c3dl.debug.logWarning('Scene::setCamera() invalid type of camera.');
+//closecomment
     return false;
   }
 
@@ -647,7 +658,9 @@ c3dl.Scene = function ()
       box.setTextureFromCanvas2D(textureCanvas.id);
       //textureManager.addTextureFromCanvas2D(textureCanvas.id);
     }
+//startcomment
     else c3dl.debug.logWarning("addFloatingText(): call to create2Dcanvas() failed");
+//closecomment
     return box;
   }
 
@@ -706,7 +719,9 @@ c3dl.Scene = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logWarning("Invalid mode passed to setPointRenderingMode");
+//closecomment
     }
   }
 
@@ -760,7 +775,9 @@ c3dl.Scene = function ()
       // Initialize the renderer
       if (!renderer.createRenderer(canvasTag))
       {
+//startcomment
         c3dl.debug.logError("Your browser does not support WebGL.<br />" + "Visit the <a href='http://en.wikipedia.org/wiki/WebGL'>WebGL wiki page</a> for information on downloading a WebGL enabled browser");
+//closecomment
         return false;
       }
       // Get the Canvas
@@ -782,7 +799,9 @@ c3dl.Scene = function ()
       // Initialize the renderer
       return renderer.init(canvasTag.width, canvasTag.height);
     }
+//startcomment
     c3dl.debug.logError('Scene::createScene() No renderer was specified.');
+//closecomment
     return false;
   }
 
@@ -904,8 +923,9 @@ c3dl.Scene = function ()
       objList.push(obj);
       return true;
     }
-
+//startcomment
     c3dl.debug.logWarning("Scene::addObjectToScene() called with an invalid argument.");
+//closecomment
     return false;
   }
 
@@ -936,7 +956,9 @@ c3dl.Scene = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logWarning('Scene::removeObjectFromScene() called with an invalid argument.');
+//closecomment
     }
 
     return isFound;
@@ -950,11 +972,13 @@ c3dl.Scene = function ()
    */
   this.startScene = function ()
   {
+//startcomment
     if (c3dl.debug.SHARK === true)
     {
       connectShark();
       startShark();
     }
+//closecomment
     numFramesSinceSceneStart = 0;
     frameCounter = 0;
 
@@ -995,11 +1019,13 @@ c3dl.Scene = function ()
     if (exitFlag)
     {
       timerID = clearInterval(timerID);
+//startcomment
       if (c3dl.debug.SHARK === true)
       {
         stopShark();
         disconnectShark();
       }
+//closecomment
       return;
     }
     if (!pauseFlag){
@@ -1313,7 +1339,9 @@ c3dl.Scene = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logError("preloadImage() must be called after Scene's init()");
+//closecomment
     }
   }
 }

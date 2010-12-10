@@ -100,12 +100,16 @@ c3dl.BoundingBox = function ()
     
     if (!c3dl.isValidVector(axisVec))
     {
+//startcomment
       c3dl.debug.logWarning('Actor::rotateOnAxis() called with the first parameter not a vector');
+//closecomment
       return;
     }
     if (isNaN(angle))
     {
+//startcomment
       c3dl.debug.logWarning('Actor::rotateOnAxis() called with the second parameter not a number');
+//closecomment
       return;
     }
     if (angle == 0)

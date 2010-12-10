@@ -81,7 +81,9 @@ c3dl.Effect = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logWarning("Invalid argument passed to c3dl.Effect's init().");
+//closecomment
     }
   }
 
@@ -118,7 +120,9 @@ c3dl.Effect = function ()
     }
     if (!isFound)
     {
+//startcomment
       c3dl.debug.logWarning("Effect getParameter(): '" + paramName + "' does not exist.");
+//closecomment
     }
     return returnVal;
   }
@@ -139,7 +143,9 @@ c3dl.Effect = function ()
     // Otherwise, there would be no place to store the values.
     if (this.isInitialized == false)
     {
+//startcomment
       c3dl.debug.logWarning("Effect must be initialized with init() " + "before setting its parameters.");
+//closecomment
     }
     else
     {
@@ -162,13 +168,17 @@ c3dl.Effect = function ()
             // The value 'true' cannot be assigned to parameter 'warmColor'
             // because it is the incorrect type. Check the Effect documentation
             // for the correct type.
+//startcomment
             c3dl.debug.logWarning("The value '" + paramValue + "' cannot be assigned " + "to parameter '" + paramName + "' because it is the " + "incorrect type. Check the c3dl.effects documentation " + " for the correct type.");
+//closecomment
           }
         }
       }
       if (!isFound)
       {
+//startcomment
         c3dl.debug.logWarning("Effect setParameter(): '" + paramName + "' does not exist.");
+//closecomment
       }
     }
   }

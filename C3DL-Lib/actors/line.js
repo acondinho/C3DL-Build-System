@@ -49,7 +49,9 @@ c3dl.Line = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logWarning("invalid values passed to Line::setCoordinates()");
+//closecomment
     }
   }
 
@@ -81,7 +83,9 @@ c3dl.Line = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logWarning("invalid values passed to Line::setColors");
+//closecomment
     }
   }
 

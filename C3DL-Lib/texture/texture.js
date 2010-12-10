@@ -49,7 +49,9 @@ c3dl.Texture = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logError('getTexturePath() error - texture has not been setup.');
+//closecomment
       return false;
     }
   }
@@ -192,7 +194,9 @@ c3dl.Texture = function ()
         }
         catch (ex)
         {
+//startcomment
           c3dl.debug.logError('Texture exception: ' + ex);
+//closecomment
         }
       };
 
@@ -210,7 +214,9 @@ c3dl.Texture = function ()
     // user passed in a null for either the canvas or the source
     else
     {
+//startcomment
       c3dl.debug.logError('null value was passed into texture load function or texture was already setup');
+//closecomment
       returnCode = false;
     }
 

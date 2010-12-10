@@ -96,7 +96,9 @@ c3dl.Renderer = function ()
     }
     else
     {
+//startcomment
       c3dl.debug.logWarning('Invalid value "' + mode + '" passed to setFillMode()');
+//closecomment
     }
   }
 

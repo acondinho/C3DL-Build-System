@@ -129,8 +129,10 @@ c3dl.FreeCamera.prototype.setLookAtPoint = function (newVec)
     // camera to look at [0,0,0], that will create a problem.
   if (c3dl.isVectorEqual(this.pos, [0, 0, 0]) && c3dl.isVectorEqual(newVec, [0, 0, 0]))
   {
+//startcomment
     c3dl.debug.logWarning("Cannot lookAt [0,0,0] since camera is at [0,0,0]." +
       " Move camera before calling setLookAt()");
+//closecomment
   }
   else
   {

@@ -77,7 +77,9 @@ c3dl.EffectTemplate = function ()
       }
       else
       {
+//startcomment
         c3dl.debug.logWarning("Invalid argument passed to Effect's addFragmentShader().");
+//closecomment
       }
     }
   }
@@ -120,12 +122,16 @@ c3dl.EffectTemplate = function ()
       }
       else
       {
+//startcomment
         c3dl.debug.logWarning("Invalid argument(s) passed to Effect's addParameter().");
+//closecomment
       }
     }
     else
     {
+//startcomment
       c3dl.debug.logWarning("Effect addParameter(): cannot be called once an effect has been initialized.");
+//closecomment
     }
   }
 
@@ -148,7 +154,9 @@ c3dl.EffectTemplate = function ()
       }
       else
       {
+//startcomment
         c3dl.debug.logWarning("Invalid argument passed to Effect's addVertexShader().");
+//closecomment
       }
     }
   }
@@ -243,7 +251,9 @@ c3dl.EffectTemplate = function ()
       }
       else
       {
+//startcomment
         c3dl.debug.logWarning("Invalid argument passed to Effect's setRenderingCB().");
+//closecomment
       }
     }
   }
