@@ -143,11 +143,13 @@ c3dl.Geometry = function () {
    
    Called automatically
    */
-  this.render = function (glCanvas3D, scene) {
-    if (glCanvas3D == null) {
-//startcomment
+  this.render = function (glCanvas3D, scene) 
+  {
+    if (glCanvas3D == null) 
+	{ //I don't think I should modify this if as it returns a value 
+//startdebugblock
       c3dl.debug.logWarning('Geometry::render() called with a null glCanvas3D');
-//closecomment
+//closedebugblock
       return false;
     }
     if (this.getPrimitiveSets()[0].getType() === "lines") {

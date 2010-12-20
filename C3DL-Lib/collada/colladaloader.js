@@ -41,18 +41,19 @@ c3dl.ColladaLoader = function ()
 
     // this may throw an exception if the file isn't found, so 
     // catch the exception and give the user a helpful warning message.
+//startdebugblock
     try
     {
+//closedebugblock
       // send the request
       xmlhttp.send(null);
+//startdebugblock
     }
     catch (err)
     {
-//startcomment
       c3dl.debug.logWarning("Could not find file '" + relativePath + "'. Check the path.");
-//closecomment
     }
-
+//closedebugblock
     /**
      @private
      */
@@ -712,13 +713,12 @@ c3dl.ColladaLoader = function ()
         }
       }
       // If this message is ever seen, that means I have to write the case for it.
+//startdebugblock
       else
       {
-//startcomment
         c3dl.debug.logError(collations[currColl].nodeName + " collation element is not yet supported");
-//closecomment
       }
-
+//closedebugblock
       // At this point, we finished getting the faces for one collation element, the integers which will index
       // into data steams. Now we move onto getting the input data streams.
       //

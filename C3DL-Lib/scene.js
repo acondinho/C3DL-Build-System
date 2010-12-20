@@ -261,17 +261,17 @@ c3dl.Scene = function ()
   {
     if (isNaN(indxNum))
     {
-//startcomment
+//startdebugblock
       c3dl.debug.logWarning("Scene::getObj() called with a parameter that's not a number");
-//closecomment
+//closedebugblock
       return null;
     }
     // Check if the index that was asked for is inside the bounds of our array
     if (indxNum < 0 || indxNum >= objList.length)
     {
-//startcomment
+//startdebugblock
       c3dl.debug.logWarning("Scene::getObj() called with " + indxNum + ", which is not betwen 0 and " + objList.length);
-//closecomment
+//closedebugblock
       return null;
     }
 
@@ -357,21 +357,23 @@ c3dl.Scene = function ()
    */
   this.setPickingCallback = function (pickingHandler)
   {
+//startdebugblock
     if (pickingHandler && pickingHandler instanceof Function)
     {
+//closedebugblock
       // for now we need to make an instance, this needs to be changed.
       this.pick = new c3dl.Picking(this);
 
       // set the picking handler
       this.pickingHandler = pickingHandler;
       canvasTag.addEventListener("mousedown", this.pick.onMouseDown, false);
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logWarning("scene's setPickingCallback() was passed an invalid callback function");
-//closecomment
     }
+//closedebugblock
   }
 
   /**
@@ -447,16 +449,18 @@ c3dl.Scene = function ()
    */
   this.setSkyModel = function (sky)
   {
+//startdebugblock
     if (sky instanceof c3dl.Collada)
     {
+//closedebugblock
       skyModel = sky;
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.Warning("Scene::setSkyModel() Inavlid argument passed, was not c3dl.Collada.");
-//closecomment
     }
+//closedebugblock
   }
 
   /**
@@ -498,12 +502,12 @@ c3dl.Scene = function ()
   {
     // Get the Canvas tag
     canvasTag = document.getElementById(canvasTagID);
+//startdebugblock
     if (canvasTag == null)
     {
-//startcomment
       c3dl.debug.logWarning('Scene::setCanvasTag() No canvas tag with name ' + canvasTagID + ' was found.');
-//closecomment
     }
+//closedebugblock
   }
 
   /**
@@ -527,9 +531,9 @@ c3dl.Scene = function ()
       camera = cam;
       return true;
     }
-//startcomment
+//startdebugblock
     c3dl.debug.logWarning('Scene::setCamera() invalid type of camera.');
-//closecomment
+//closedebugblock
     return false;
   }
 
@@ -658,9 +662,9 @@ c3dl.Scene = function ()
       box.setTextureFromCanvas2D(textureCanvas.id);
       //textureManager.addTextureFromCanvas2D(textureCanvas.id);
     }
-//startcomment
+//startdebugblock
     else c3dl.debug.logWarning("addFloatingText(): call to create2Dcanvas() failed");
-//closecomment
+//closedebugblock
     return box;
   }
 
@@ -713,16 +717,18 @@ c3dl.Scene = function ()
    */
   this.setPointRenderingMode = function (mode)
   {
+//startdebugblock
     if (mode == c3dl.POINT_MODE_POINT || mode == c3dl.POINT_MODE_SPHERE)
     {
+//startdebugblock
       pointRenderingMode = mode;
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logWarning("Invalid mode passed to setPointRenderingMode");
-//closecomment
     }
+//closedebugblock
   }
 
   /**
@@ -775,9 +781,9 @@ c3dl.Scene = function ()
       // Initialize the renderer
       if (!renderer.createRenderer(canvasTag))
       {
-//startcomment
+//startdebugblock
         c3dl.debug.logError("Your browser does not support WebGL.<br />" + "Visit the <a href='http://en.wikipedia.org/wiki/WebGL'>WebGL wiki page</a> for information on downloading a WebGL enabled browser");
-//closecomment
+//closedebugblock
         return false;
       }
       // Get the Canvas
@@ -799,9 +805,9 @@ c3dl.Scene = function ()
       // Initialize the renderer
       return renderer.init(canvasTag.width, canvasTag.height);
     }
-//startcomment
+//startdebugblock
     c3dl.debug.logError('Scene::createScene() No renderer was specified.');
-//closecomment
+//closedebugblock
     return false;
   }
 
@@ -923,9 +929,9 @@ c3dl.Scene = function ()
       objList.push(obj);
       return true;
     }
-//startcomment
+//startdebugblock
     c3dl.debug.logWarning("Scene::addObjectToScene() called with an invalid argument.");
-//closecomment
+//closedebugblock
     return false;
   }
 
@@ -941,8 +947,10 @@ c3dl.Scene = function ()
   {
     var isFound = false;
 
+//startdebugblock
     if (obj instanceof c3dl.Primitive || obj instanceof c3dl.Point || obj instanceof c3dl.Line || obj instanceof c3dl.ParticleSystem)
     {
+//closedebugblock
       // Check against each item in the list
       for (var i = 0, len = objList.length; i < len; i++)
       {
@@ -953,13 +961,13 @@ c3dl.Scene = function ()
           isFound = true;
         }
       }
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logWarning('Scene::removeObjectFromScene() called with an invalid argument.');
-//closecomment
     }
+//closedebugblock
 
     return isFound;
   }
@@ -972,13 +980,13 @@ c3dl.Scene = function ()
    */
   this.startScene = function ()
   {
-//startcomment
+//startdebugblock
     if (c3dl.debug.SHARK === true)
     {
       connectShark();
       startShark();
     }
-//closecomment
+//closedebugblock
     numFramesSinceSceneStart = 0;
     frameCounter = 0;
 
@@ -1019,13 +1027,13 @@ c3dl.Scene = function ()
     if (exitFlag)
     {
       timerID = clearInterval(timerID);
-//startcomment
+//startdebugblock
       if (c3dl.debug.SHARK === true)
       {
         stopShark();
         disconnectShark();
       }
-//closecomment
+//closedebugblock
       return;
     }
     if (!pauseFlag){
@@ -1330,18 +1338,20 @@ c3dl.Scene = function ()
    */
   this.preloadImages = function (imagePaths)
   {
+//startdebugblock
     if (textureManager)
     {
+//closedebugblock
       for (var i = 0, len = imagePaths.length; i < len; i++)
       {
         textureManager.addTexture(imagePaths[i]);
       }
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logError("preloadImage() must be called after Scene's init()");
-//closecomment
     }
+//closedebugblock
   }
 }

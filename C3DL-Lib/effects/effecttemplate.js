@@ -71,16 +71,18 @@ c3dl.EffectTemplate = function ()
   {
     if (this.isInitialized == false)
     {
+//startdebugblock
       if (fragmentShader && typeof(fragmentShader) == "string")
       {
+//closedebugblock
         this.fragmentShaders.push(fragmentShader);
+//startdebugblock
       }
       else
       {
-//startcomment
         c3dl.debug.logWarning("Invalid argument passed to Effect's addFragmentShader().");
-//closecomment
       }
+//closedebugblock
     }
   }
 
@@ -98,8 +100,10 @@ c3dl.EffectTemplate = function ()
   {
     if (this.isInitialized == false)
     {
+//startdebugblock
       if (paramName && typeof(paramName) == "string")
       {
+//closedebugblock
         var val;
 
         if (paramType == Array)
@@ -119,19 +123,17 @@ c3dl.EffectTemplate = function ()
           type: paramType,
           value: val
         });
+//startdebugblock
       }
       else
       {
-//startcomment
         c3dl.debug.logWarning("Invalid argument(s) passed to Effect's addParameter().");
-//closecomment
-      }
+      }	  
     }
     else
     {
-//startcomment
       c3dl.debug.logWarning("Effect addParameter(): cannot be called once an effect has been initialized.");
-//closecomment
+//closedebugblock
     }
   }
 
@@ -148,16 +150,18 @@ c3dl.EffectTemplate = function ()
   {
     if (this.isInitialized == false)
     {
+//startdebugblock
       if (vertexShader && typeof(vertexShader) == "string")
       {
+//closedebugblock
         this.vertexShaders.push(vertexShader);
+//startdebugblock
       }
       else
       {
-//startcomment
         c3dl.debug.logWarning("Invalid argument passed to Effect's addVertexShader().");
-//closecomment
       }
+//closedebugblock	  
     }
   }
 
@@ -245,16 +249,18 @@ c3dl.EffectTemplate = function ()
   {
     if (this.isInitialized == false)
     {
+//startdebugblock
       if (func instanceof Function)
       {
+//closedebugblock
         this.renderingCB = func;
+//startdebugblock
       }
       else
       {
-//startcomment
         c3dl.debug.logWarning("Invalid argument passed to Effect's setRenderingCB().");
-//closecomment
       }
+//closedebugblock	  
     }
   }
 

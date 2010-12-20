@@ -127,15 +127,15 @@ c3dl.FreeCamera.prototype.setLookAtPoint = function (newVec)
 {
     // if the position hasn't yet been changed and they want the
     // camera to look at [0,0,0], that will create a problem.
+//startdebugblock
   if (c3dl.isVectorEqual(this.pos, [0, 0, 0]) && c3dl.isVectorEqual(newVec, [0, 0, 0]))
   {
-//startcomment
     c3dl.debug.logWarning("Cannot lookAt [0,0,0] since camera is at [0,0,0]." +
       " Move camera before calling setLookAt()");
-//closecomment
   }
   else
   {
+//closedebugblock
     // Figure out the direction of the point we are looking at.
     this.dir = c3dl.subtractVectors(newVec, this.pos);
     c3dl.normalizeVector(this.dir);
@@ -144,7 +144,9 @@ c3dl.FreeCamera.prototype.setLookAtPoint = function (newVec)
     c3dl.normalizeVector(this.left);
     c3dl.vectorCrossProduct(this.dir, this.left, this.up);
     c3dl.normalizeVector(this.up);
+//startdebugblock
   }
+//closedebugblock
 }
  
 

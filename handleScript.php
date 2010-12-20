@@ -7,7 +7,7 @@
 	error_reporting(E_ALL);
 	if (isset($_GET['submitBtn'])) {
 		$result = array();
-		$fileName = "c3dlapi";
+		$fileName = "c3dapi";
 		$minifyArg = "full";
 		$debugArg = "debug";
 

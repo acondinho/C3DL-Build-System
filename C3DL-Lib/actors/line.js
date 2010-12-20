@@ -37,8 +37,10 @@ c3dl.Line = function ()
    */
   this.setCoordinates = function (beginCoord, endCoord)
   {
+//startdebugblock
     if (beginCoord.length == 3 && endCoord.length == 3)
     {
+//closedebugblock
       this.coords[0] = beginCoord[0];
       this.coords[1] = beginCoord[1];
       this.coords[2] = beginCoord[2];
@@ -46,13 +48,13 @@ c3dl.Line = function ()
       this.coords[3] = endCoord[0];
       this.coords[4] = endCoord[1];
       this.coords[5] = endCoord[2];
+//startdebugblock	  
     }
     else
     {
-//startcomment
       c3dl.debug.logWarning("invalid values passed to Line::setCoordinates()");
-//closecomment
     }
+//closedebugblock
   }
 
 
@@ -71,8 +73,10 @@ c3dl.Line = function ()
    */
   this.setColors = function (beginColor, endColor)
   {
+//startdebugblock
     if (beginColor.length == 3 && endColor.length == 3)
     {
+//closedebugblock
       this.colors[0] = beginColor[0];
       this.colors[1] = beginColor[1];
       this.colors[2] = beginColor[2];
@@ -80,13 +84,13 @@ c3dl.Line = function ()
       this.colors[3] = endColor[0];
       this.colors[4] = endColor[1];
       this.colors[5] = endColor[2];
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logWarning("invalid values passed to Line::setColors");
-//closecomment
     }
+//closedebugblock	
   }
 
   /**

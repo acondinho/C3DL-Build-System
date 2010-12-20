@@ -200,7 +200,8 @@ c3dl.Collada.prototype.init = function (daePath) {
  */
 c3dl.Collada.prototype.update = function (timeStep) {
     // keep checking to see if the file is done being loaded.
-    if (this.isReady()) {
+    if (this.isReady()) 
+	{
         c3dl.pushMatrix();
         c3dl.loadIdentity();
         this.sceneGraph.update(timeStep);
@@ -213,12 +214,12 @@ c3dl.Collada.prototype.update = function (timeStep) {
         linVel = c3dl.multiplyVector(linVel, timeStep);
         var tempPos = c3dl.addVectors(this.sceneGraph.getPosition(), linVel);
         this.boundingbox.setPosition(tempPos);
-
     }
-    else {
-//startcomment
+    else 
+	{ //not blocking this if statement as the colladamanager conditional has nothing to do with debug
+//startdebugblock
         c3dl.debug.logError('You must call addModel("' + this.path + '"); before canvasMain.');
-//closecomment
+//closedebugblock
         if (c3dl.ColladaManager.isFileLoaded(this.path)) {
             // get a copy of the scenegraph so we can modify it.
             this.sceneGraph = c3dl.ColladaManager.getSceneGraphCopy(this.path);

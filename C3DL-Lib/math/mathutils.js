@@ -51,9 +51,9 @@ c3dl.invSqrt = function (num)
     // We have to do this ourselves since javascript does not have it.
     return 1 / Math.sqrt(num);
   }
-//startcomment
+//startdebugblock
   c3dl.debug.logWarning('invSqrt() caled with a parameter that\'s not a number');
-//closecomment
+//closedebugblock
   return 0;
 }
 

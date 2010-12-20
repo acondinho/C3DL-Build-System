@@ -49,9 +49,9 @@ c3dl.Texture = function ()
     }
     else
     {
-//startcomment
+//startdebugblock
       c3dl.debug.logError('getTexturePath() error - texture has not been setup.');
-//closecomment
+//closedebugblock
       return false;
     }
   }
@@ -185,19 +185,20 @@ c3dl.Texture = function ()
       {
         //
         this.setupWebGL();
-
+//startdebugblock
         try
         {
+//closedebugblock
           this.texImage2DWrapper();
           this.glCanvas3D.generateMipmap(glCanvas3D.TEXTURE_2D);
           this.isSetup = true;
+//startdebugblock
         }
         catch (ex)
         {
-//startcomment
           c3dl.debug.logError('Texture exception: ' + ex);
-//closecomment
         }
+//closedebugblock
       };
 
       if (sourceCanvas != null)
@@ -214,9 +215,9 @@ c3dl.Texture = function ()
     // user passed in a null for either the canvas or the source
     else
     {
-//startcomment
+//startdebugblock
       c3dl.debug.logError('null value was passed into texture load function or texture was already setup');
-//closecomment
+//closedebugblock
       returnCode = false;
     }
 

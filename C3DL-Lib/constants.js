@@ -353,36 +353,36 @@ c3dl.FILL = 0x0004;
  @private
  @constant
  */
-//startcomment
+//startdebugblock
 c3dl.DEBUG_INFO = "Info";
-//closecomment
+//closedebugblock
 
 /**
  This is used internally in c3DL by the debug class.
  @private
  @constant
  */
-//startcomment
+//startdebugblock
 c3dl.DEBUG_ERROR = "Error";
-//closecomment
+//closedebugblock
 
 /**
  This is used internally in c3DL by the debug class.
  @private
  @constant
  */
-//startcomment
+//startdebugblock
 c3dl.DEBUG_WARNING = "Warning";
-//closecomment
+//closedebugblock
 
 /**
  This is used internally in c3DL by the debug class.
  @private
  @constant
  */
-//startcomment
+//startdebugblock
 c3dl.DEBUG_EXCEPTION = "Exception";
-//closecomment
+//closedebugblock
 
 ////////////////////////////// PICKING ///////////////////////////
 /**

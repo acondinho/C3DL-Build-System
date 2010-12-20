@@ -90,16 +90,18 @@ c3dl.Renderer = function ()
    */
   this.setFillMode = function (mode)
   {
+//startdebugblock
     if (mode == c3dl.FILL || mode == c3dl.WIRE_FRAME)
     {
+//closedebugblock
       this.fillMode = mode;
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logWarning('Invalid value "' + mode + '" passed to setFillMode()');
-//closecomment
     }
+//closedebugblock
   }
 
   /**

@@ -15,7 +15,7 @@
 # Ok, so you have two options, if you scroll down you#
 # will find the main buildFull function, in this     #
 # in this function, you can either build using the   #
-# build order used in the current c3dlapi.js file    #
+# build order used in the current c3dapi.js file    #
 # which SHOULD work, orrr you can attempt this fun   #
 # little monstrosity, which seperates the builds by  #
 # folder, but in no way has any meaningful order, so #
@@ -112,26 +112,26 @@ buildFull()
 	# when building only include the first block of the c3dapi.js pathing, everything else will cause it to break
 	
 	# Testing something here...O....M......G....IT WORKS
-	cat C3DL-Lib/c3dapi.js C3DL-Lib/c3dlnamespace.js C3DL-Lib/constants.js C3DL-Lib/effects/effect_docs.js C3DL-Lib/debug.js rendererAPI.js mathAPI.js cameraAPI.js enclosureAPI.js actorAPI.js frustumcullingAPI.js C3DL-Lib/scene.js textureAPI.js colladaAPI.js lightAPI.js C3DL-Lib/material.js C3DL-Lib/collada/collada.js C3DL-Lib/scenegraph/scenenode.js C3DL-Lib/utilities/utilities.js shadersAPI.js effectsAPI.js particleSysAPI.js C3DL-Lib/init.js interactionAPI.js > c3dlapi.js
+	cat C3DL-Lib/c3dapi.js C3DL-Lib/c3dlnamespace.js C3DL-Lib/constants.js C3DL-Lib/effects/effect_docs.js C3DL-Lib/debug.js rendererAPI.js mathAPI.js cameraAPI.js enclosureAPI.js actorAPI.js frustumcullingAPI.js C3DL-Lib/scene.js textureAPI.js colladaAPI.js lightAPI.js C3DL-Lib/material.js C3DL-Lib/collada/collada.js C3DL-Lib/scenegraph/scenenode.js C3DL-Lib/utilities/utilities.js shadersAPI.js effectsAPI.js particleSysAPI.js C3DL-Lib/init.js interactionAPI.js > c3dapi.js
 }
 
 buildNoDebug()
 {
 	# Testing something here...O....M......G....IT WORKS
-	cat C3DL-Lib/c3dapi.js C3DL-Lib/c3dlnamespace.js C3DL-Lib/constants.js C3DL-Lib/effects/effect_docs.js rendererAPI.js mathAPI.js cameraAPI.js enclosureAPI.js actorAPI.js frustumcullingAPI.js C3DL-Lib/scene.js textureAPI.js colladaAPI.js lightAPI.js C3DL-Lib/material.js C3DL-Lib/collada/collada.js C3DL-Lib/scenegraph/scenenode.js C3DL-Lib/utilities/utilities.js shadersAPI.js effectsAPI.js particleSysAPI.js C3DL-Lib/init.js interactionAPI.js > c3dlapi.js
+	cat C3DL-Lib/c3dapi.js C3DL-Lib/c3dlnamespace.js C3DL-Lib/constants.js C3DL-Lib/effects/effect_docs.js rendererAPI.js mathAPI.js cameraAPI.js enclosureAPI.js actorAPI.js frustumcullingAPI.js C3DL-Lib/scene.js textureAPI.js colladaAPI.js lightAPI.js C3DL-Lib/material.js C3DL-Lib/collada/collada.js C3DL-Lib/scenegraph/scenenode.js C3DL-Lib/utilities/utilities.js shadersAPI.js effectsAPI.js particleSysAPI.js C3DL-Lib/init.js interactionAPI.js > c3dapi.js
 }
 
 buildStripped()
 {
-	jsmin <c3dlapi.js >c3dlapi-min.js
-	rm c3dlapi.js
-	mv c3dlapi-min.js c3dlapi.js
+	jsmin <c3dapi.js >c3dapi-min.js
+	rm c3dapi.js
+	mv c3dapi-min.js c3dapi.js
 }
 
 # Main Code Block
 if [ "$#" -eq 0 ] 
 then
-	echo "No parameters supplied to the almighty build system" > c3dlapi.js
+	echo "No parameters supplied"
 else
 	buildIndividuals
 	if [ "$1" = "full" ]; 
@@ -142,8 +142,8 @@ else
 		elif [ "$2" = "nodebug" ]
 		then
 			buildNoDebug
-			perl -p -i -e "s/\/\/startcomment/\/*commenty/g" c3dlapi.js
-			perl -p -i -e "s/\/\/closecomment/commenty*\//g" c3dlapi.js
+			perl -p -i -e "s/\/\/startdebugblock/\/*commenty/g" c3dapi.js
+			perl -p -i -e "s/\/\/closedebugblock/commenty*\//g" c3dapi.js
 		else
 			buildFull
 		fi
@@ -155,16 +155,13 @@ else
 		elif [ "$2" = "nodebug" ]
 		then
 			buildNoDebug
-			perl -p -i -e "s/\/\/startcomment/\/*commenty/g" c3dlapi.js
-			perl -p -i -e "s/\/\/closecomment/commenty*\//g" c3dlapi.js
+			perl -p -i -e "s/\/\/startdebugblock/\/*commenty/g" c3dapi.js
+			perl -p -i -e "s/\/\/closedebugblock/commenty*\//g" c3dapi.js
 		else
 			buildFull
 		fi
 		buildStripped
 	else
-		echo "Incorrect parameters supplied to the almighty build system" > c3dlapi.js
+		echo "Incorrect parameters supplied"
 	fi
-
-#cat c3dlapi.js
-
 fi

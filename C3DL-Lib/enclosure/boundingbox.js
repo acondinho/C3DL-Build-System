@@ -98,18 +98,19 @@ c3dl.BoundingBox = function ()
     var rotateOnAxisQuat = c3dl.makeQuat(0, 0, 0, 0);
     var rotateOnAxisMat = c3dl.makeZeroMatrix();
     
+//shouldn't remove ifs since they cause a return
     if (!c3dl.isValidVector(axisVec))
     {
-//startcomment
+//startdebugblock
       c3dl.debug.logWarning('Actor::rotateOnAxis() called with the first parameter not a vector');
-//closecomment
+//closedebugblock
       return;
     }
     if (isNaN(angle))
     {
-//startcomment
+//startdebugblock
       c3dl.debug.logWarning('Actor::rotateOnAxis() called with the second parameter not a number');
-//closecomment
+//closedebugblock
       return;
     }
     if (angle == 0)

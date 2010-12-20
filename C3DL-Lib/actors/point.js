@@ -64,16 +64,18 @@ c3dl.Point = function ()
    */
   this.setPosition = function (pos)
   {
+//startdebugblock
     if (pos.length == 3)
     {
+//closedebugblock
       this.position = c3dl.copyObj(pos);
+//startdebugblock	  
     }
     else
     {
-//startcomment
       c3dl.debug.logWarning("invalid value passed to Point::setPosition()");
-//closecomment
     }
+//closedebugblock	
   }
 
   /**
@@ -94,16 +96,18 @@ c3dl.Point = function ()
    */
   this.setColor = function (color)
   {
+//startdebugblock
     if (color.length == 3)
     {
+//closedebugblock
       this.color = c3dl.copyObj(color);
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logWarning("invalid value passed to Point::setColor()");
-//closecomment
     }
+//closedebugblock	
   }
 
   /**

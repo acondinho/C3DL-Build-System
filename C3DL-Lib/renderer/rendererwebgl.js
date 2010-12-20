@@ -154,9 +154,9 @@ c3dl.WebGL = function ()
     // it is possible createProgram failed.
     if (program == null)
     {
-//startcomment
+//startdebugblock
       c3dl.debug.logError("failed to create shader program");
-//closecomment
+//closedebugblock
       return null;
     }
 
@@ -169,9 +169,9 @@ c3dl.WebGL = function ()
     // The compilation status of each shader can be queried.
     if (!gl.getShaderParameter(vertShader, gl.COMPILE_STATUS))
     {
-//startcomment
+//startdebugblock
       c3dl.debug.logError("vert shader: " + gl.getShaderInfoLog(vertShader));
-//closecomment
+//closedebugblock
       gl.deleteShader(vertShader);
       return null;
     }
@@ -186,9 +186,9 @@ c3dl.WebGL = function ()
     // The compilation status of each shader can be queried.
     if (!gl.getShaderParameter(vertShader, gl.COMPILE_STATUS))
     {
-//startcomment
+//startdebugblock
       c3dl.debug.logError("frag shader " + gl.getShaderInfoLog(vertShader));
-//closecomment
+//closedebugblock
       gl.deleteShader(vertShader);
       return null;
     }
@@ -207,9 +207,9 @@ c3dl.WebGL = function ()
     // Check if the shaders were linked successfully.
     if (gl.getProgramParameter(program, gl.LINK_STATUS) != 1)
     {
-//startcomment
+//startdebugblock
       c3dl.debug.logError(gl.getProgramInfoLog(program));
-//closecomment
+//closedebugblock
       gl.deleteProgram(program);
       return null;
     }
@@ -317,10 +317,10 @@ c3dl.WebGL = function ()
     // the toon shader uses lights, but does not use
     // the ambient light. We need to turn off debugger to
     // suppress any errors.
-//startcomment
+//startdebugblock
     var prevVal = c3dl.debug.getVisible();
     c3dl.debug.setVisible(false);
-//closecomment
+//closedebugblock
 
     for (var i = 0, len = this.programsWithLights.length; i < len; i++)
     {
@@ -330,12 +330,12 @@ c3dl.WebGL = function ()
     }
 
     // turn it back on if it was on before.
-//startcomment
+//startdebugblock
     if (prevVal == true)
     {
       c3dl.debug.setVisible(true);
     }
-//closecomment
+//closedebugblock
   }
 
   /**
@@ -460,7 +460,7 @@ c3dl.WebGL = function ()
    */
   this.createRenderer = function (cvs)
   {
-//startcomment
+//startdebugblock
     if (c3dl.debug.DUMMY)
     {
       glCanvas3D =
@@ -473,7 +473,7 @@ c3dl.WebGL = function ()
     }
     else
     {
-//closecomment
+//closedebugblock
       try
       {
         glCanvas3D = cvs.getContext('experimental-webgl');
@@ -482,9 +482,9 @@ c3dl.WebGL = function ()
       catch (err)
       {
       }
-//startcomment
+//startdebugblock
     }
-//closecomment
+//closedebugblock
 
     return glCanvas3D ? true : false;
   }
@@ -694,8 +694,10 @@ c3dl.WebGL = function ()
         var programObject = this.createProgram(joinedVertexShaders, joinedFragmentShaders);
 
         // if the effect was successfully compiled, render it using the effect
+//startdebugblock
         if (programObject)
         {
+//closedebugblock
           effect.addProgramObject(programObject);
 
           // check if the user added the light vertex shader source.
@@ -720,15 +722,15 @@ c3dl.WebGL = function ()
               this.setUniformi(programObject.getProgramID(), "lightingOn", true);
             }
           }
+//startdebugblock
         }
         else
         {
-//startcomment
           c3dl.debug.logWarning("could not compile effect shader(s).");
           c3dl.debug.logInfo(joinedVertexShaders);
           c3dl.debug.logInfo(joinedFragmentShaders);
-//closecomment
         }
+//closedebugblock
       }
       // if the effect has already been compiled, go ahead and render the geometry.
       else
@@ -1069,18 +1071,20 @@ c3dl.WebGL = function ()
   {
     var attribLoc = glCanvas3D.getAttribLocation(shader, varName);
 
+//startdebugblock
     if (attribLoc != c3dl.SHADER_VAR_NOT_FOUND)
     {
+//closedebugblock
       glCanvas3D.bindBuffer(glCanvas3D.ARRAY_BUFFER, vbo);
       glCanvas3D.vertexAttribPointer(attribLoc, size, glCanvas3D.FLOAT, false, 0, 0);
       glCanvas3D.enableVertexAttribArray(attribLoc);
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logError("Attribute variable '" + varName + "' not found in shader with ID = " + shader);
-//closecomment
     }
+//closedebugblock
   }
 
   /**
@@ -1107,16 +1111,18 @@ c3dl.WebGL = function ()
     var varLocation = glCanvas3D.getUniformLocation(programObjectID, varName);
 
     // the variable won't be found if it was optimized out.
+//startdebugblock
     if (varLocation != c3dl.SHADER_VAR_NOT_FOUND)
     {
+//closedebugblock
       glCanvas3D.uniformMatrix4fv(varLocation, false, matrix);
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logError("Uniform matrix variable '" + varName + "' not found in program object.");
-//closecomment
     }
+//closedebugblock
   }
 
   /**
@@ -1144,8 +1150,10 @@ c3dl.WebGL = function ()
   {
     var varLocation = glCanvas3D.getUniformLocation(shader, varName);
     // the variable won't be found if it was optimized out.
+//startdebugblock
     if (varLocation != c3dl.SHADER_VAR_NOT_FOUND)
     {
+//closedebugblock
       if (value.length == 4)
       {
         glCanvas3D.uniform4fv(varLocation, value);
@@ -1162,13 +1170,13 @@ c3dl.WebGL = function ()
       {
         glCanvas3D.uniform1f(varLocation, value);
       }
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logError('Uniform variable "' + varName + '" not found in program object.');
-//closecomment
     }
+//closedebugblock
   }
 
   /**
@@ -1197,8 +1205,10 @@ c3dl.WebGL = function ()
     var varLocation = glCanvas3D.getUniformLocation(programObjectID, varName);
 
     // the variable won't be found if it was optimized out.
+//startdebugblock
     if (varLocation != c3dl.SHADER_VAR_NOT_FOUND)
     {
+//closedebugblock
       if (value.length == 4)
       {
         glCanvas3D.uniform4iv(varLocation, value);
@@ -1215,13 +1225,13 @@ c3dl.WebGL = function ()
       {
         glCanvas3D.uniform1i(varLocation, value);
       }
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logError('Uniform variable "' + varName + '" not found in program object.');
-//closecomment
     }
+//closedebugblock
   }
 
   /**
@@ -1232,28 +1242,29 @@ c3dl.WebGL = function ()
    */
   this.enable = function (capability)
   {
+//startdebugblock
     try
     {
       // check if its defined
       if (capability)
       {
+//closedebugblock
         glCanvas3D.enable(capability);
+//startdebugblock
       }
       else
       {
-//startcomment
         c3dl.debug.logWarning("Enable command passed undefined value.");
-//closecomment
+
       }
     }
     catch (e)
     {
-//startcomment
       c3dl.debug.logException("Exception name:" + e.name +
         "<br />" + "Exception msg: " + e.message + "<br />" +
         "Capability: " + capability);
-//closecomment
     }
+//closedebugblock
   }
 
   /**
@@ -1269,16 +1280,18 @@ c3dl.WebGL = function ()
    */
   this.disable = function (capability)
   {
+//startdebugblock
     if (capability)
     {
+//closedebugblock
       glCanvas3D.disable(capability);
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logWarning("disable command passed undefined value.");
-//closecomment
     }
+//closedebugblock
   }
 }
 

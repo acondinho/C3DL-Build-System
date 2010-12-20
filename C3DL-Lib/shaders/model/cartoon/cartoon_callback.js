@@ -18,9 +18,9 @@ c3dl.cartoon_callback = function (renderingObj)
 
   if (effect.getParameter("qMap") == null)
   {
-//startcomment
+//startdebugblock
     c3dl.debug.logWarning('"qMap" is a required parameter for c3dl.effects.CARTOON');
-//closecomment
+//closedebugblock
     return;
   }
 

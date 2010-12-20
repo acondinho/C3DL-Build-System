@@ -65,9 +65,10 @@ c3dl.Effect = function ()
   this.init = function (effectTemplate)
   {
     var check = true;
-
+//startdebugblock
     if (check || effectTemplate instanceof c3dl.EffectTemplate)
     {
+//closedebugblock
       // keep a reference to the template as it holds the shaders
       // which will need to be compiled during rendering.
       this.effectTemplate = effectTemplate;
@@ -78,13 +79,13 @@ c3dl.Effect = function ()
 
       // prevent the Effect from being initialized more than once.
       this.isInitialized = true;
+//startdebugblock
     }
     else
     {
-//startcomment
       c3dl.debug.logWarning("Invalid argument passed to c3dl.Effect's init().");
-//closecomment
     }
+//closedebugblock
   }
 
   /**
@@ -118,12 +119,12 @@ c3dl.Effect = function ()
         returnVal = this.instanceParams[i].value;
       }
     }
+//startdebugblock
     if (!isFound)
     {
-//startcomment
       c3dl.debug.logWarning("Effect getParameter(): '" + paramName + "' does not exist.");
-//closecomment
     }
+//closedebugblock
     return returnVal;
   }
 
@@ -141,14 +142,14 @@ c3dl.Effect = function ()
     // When the instance effect is initialized, all the default parameters from the effect
     // are copied to the instance effect and then they can be changed with setParameter.
     // Otherwise, there would be no place to store the values.
+//startdebugblock
     if (this.isInitialized == false)
     {
-//startcomment
       c3dl.debug.logWarning("Effect must be initialized with init() " + "before setting its parameters.");
-//closecomment
     }
     else
     {
+//closedebugblock	
       var isFound = false;
 
       for (var i = 0, len = this.instanceParams.length; !isFound && i < len; i++)
@@ -158,9 +159,12 @@ c3dl.Effect = function ()
           isFound = true;
 
           // check if the value matches the parameter's type
+//startdebugblock
           if (paramValue.constructor == this.instanceParams[i].type)
           {
+//closedebugblock
             this.instanceParams[i].value = paramValue;
+//startdebugblock
           }
           else
           {
@@ -168,18 +172,19 @@ c3dl.Effect = function ()
             // The value 'true' cannot be assigned to parameter 'warmColor'
             // because it is the incorrect type. Check the Effect documentation
             // for the correct type.
-//startcomment
             c3dl.debug.logWarning("The value '" + paramValue + "' cannot be assigned " + "to parameter '" + paramName + "' because it is the " + "incorrect type. Check the c3dl.effects documentation " + " for the correct type.");
-//closecomment
           }
+//closedebugblock		  
         }
       }
+//startdebugblock	  
       if (!isFound)
       {
-//startcomment
         c3dl.debug.logWarning("Effect setParameter(): '" + paramName + "' does not exist.");
-//closecomment
       }
+//closedebugblock	  
+//startdebugblock
     }
+//closedebugblock
   }
 }
