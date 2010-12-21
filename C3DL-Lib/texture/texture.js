@@ -43,17 +43,19 @@ c3dl.Texture = function ()
   */
   this.getAbsolutePath = function ()
   {
+//startdebugblock
     if (textureImage != null)
     {
+//closedebugblock
       return textureImage.src;
+//startdebugblock
     }
     else
     {
-//startdebugblock
       c3dl.debug.logError('getTexturePath() error - texture has not been setup.');
-//closedebugblock
       return false;
     }
+//closedebugblock
   }
 
   /** 

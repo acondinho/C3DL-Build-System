@@ -152,14 +152,14 @@ c3dl.WebGL = function ()
     var program = gl.createProgram();
 
     // it is possible createProgram failed.
+//startdebugblock
     if (program == null)
     {
-//startdebugblock
       c3dl.debug.logError("failed to create shader program");
-//closedebugblock
       return null;
     }
-
+//closedebugblock
+	
     var vertShader = gl.createShader(gl.VERTEX_SHADER);
     gl.shaderSource(vertShader, vertexShader);
 

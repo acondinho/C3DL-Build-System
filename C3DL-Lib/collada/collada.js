@@ -219,11 +219,14 @@ c3dl.Collada.prototype.update = function (timeStep) {
 	{ //not blocking this if statement as the colladamanager conditional has nothing to do with debug
 //startdebugblock
         c3dl.debug.logError('You must call addModel("' + this.path + '"); before canvasMain.');
+        if (c3dl.ColladaManager.isFileLoaded(this.path)) 
+		{
 //closedebugblock
-        if (c3dl.ColladaManager.isFileLoaded(this.path)) {
             // get a copy of the scenegraph so we can modify it.
             this.sceneGraph = c3dl.ColladaManager.getSceneGraphCopy(this.path);
+//startdebugblock
         }
+//closedebugblock
     }
 }
 

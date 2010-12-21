@@ -259,21 +259,19 @@ c3dl.Scene = function ()
    */
   this.getObj = function (indxNum)
   {
+//startdebugblock
     if (isNaN(indxNum))
     {
-//startdebugblock
       c3dl.debug.logWarning("Scene::getObj() called with a parameter that's not a number");
-//closedebugblock
       return null;
     }
     // Check if the index that was asked for is inside the bounds of our array
     if (indxNum < 0 || indxNum >= objList.length)
     {
-//startdebugblock
       c3dl.debug.logWarning("Scene::getObj() called with " + indxNum + ", which is not betwen 0 and " + objList.length);
-//closedebugblock
       return null;
     }
+//closedebugblock
 
     // We do this because we dont want outsiders modifying the object list,
     // just the object themselves (ie. changing position, orientation, etc)
@@ -779,6 +777,7 @@ c3dl.Scene = function ()
     if (renderer != null && canvasTag != null)
     {
       // Initialize the renderer
+	  // This looks important not gonna remove
       if (!renderer.createRenderer(canvasTag))
       {
 //startdebugblock

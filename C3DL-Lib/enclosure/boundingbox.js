@@ -99,24 +99,22 @@ c3dl.BoundingBox = function ()
     var rotateOnAxisMat = c3dl.makeZeroMatrix();
     
 //shouldn't remove ifs since they cause a return
+//startdebugblock
     if (!c3dl.isValidVector(axisVec))
     {
-//startdebugblock
       c3dl.debug.logWarning('Actor::rotateOnAxis() called with the first parameter not a vector');
-//closedebugblock
       return;
     }
     if (isNaN(angle))
     {
-//startdebugblock
       c3dl.debug.logWarning('Actor::rotateOnAxis() called with the second parameter not a number');
-//closedebugblock
       return;
     }
     if (angle == 0)
     {
       return;
     }
+//closedebugblock	
 
     // Create a proper Quaternion based on location and angle
     c3dl.axisAngleToQuat(axisVec, angle, rotateOnAxisQuat);

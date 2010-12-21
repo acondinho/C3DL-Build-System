@@ -69,9 +69,9 @@ c3dl.EffectTemplate = function ()
    */
   this.addFragmentShader = function (fragmentShader)
   {
+//startdebugblock
     if (this.isInitialized == false)
     {
-//startdebugblock
       if (fragmentShader && typeof(fragmentShader) == "string")
       {
 //closedebugblock
@@ -82,8 +82,8 @@ c3dl.EffectTemplate = function ()
       {
         c3dl.debug.logWarning("Invalid argument passed to Effect's addFragmentShader().");
       }
-//closedebugblock
     }
+//closedebugblock
   }
 
   /**
@@ -98,9 +98,9 @@ c3dl.EffectTemplate = function ()
    */
   this.addParameter = function (paramName, paramType, paramDefaultValue)
   {
+//startdebugblock
     if (this.isInitialized == false)
     {
-//startdebugblock
       if (paramName && typeof(paramName) == "string")
       {
 //closedebugblock
@@ -133,8 +133,8 @@ c3dl.EffectTemplate = function ()
     else
     {
       c3dl.debug.logWarning("Effect addParameter(): cannot be called once an effect has been initialized.");
-//closedebugblock
     }
+//closedebugblock
   }
 
   /**
@@ -148,9 +148,9 @@ c3dl.EffectTemplate = function ()
    */
   this.addVertexShader = function (vertexShader)
   {
+//startdebugblock
     if (this.isInitialized == false)
     {
-//startdebugblock
       if (vertexShader && typeof(vertexShader) == "string")
       {
 //closedebugblock
@@ -160,9 +160,9 @@ c3dl.EffectTemplate = function ()
       else
       {
         c3dl.debug.logWarning("Invalid argument passed to Effect's addVertexShader().");
-      }
-//closedebugblock	  
+      }  
     }
+//closedebugblock
   }
 
   /**
@@ -247,9 +247,9 @@ c3dl.EffectTemplate = function ()
    */
   this.setRenderingCallback = function (func)
   {
+//startdebugblock
     if (this.isInitialized == false)
     {
-//startdebugblock
       if (func instanceof Function)
       {
 //closedebugblock
@@ -260,8 +260,8 @@ c3dl.EffectTemplate = function ()
       {
         c3dl.debug.logWarning("Invalid argument passed to Effect's setRenderingCB().");
       }
-//closedebugblock	  
     }
+//closedebugblock	
   }
 
   /**

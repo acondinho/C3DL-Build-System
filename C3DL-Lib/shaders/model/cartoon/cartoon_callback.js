@@ -16,13 +16,13 @@ c3dl.cartoon_callback = function (renderingObj)
 
   gl.useProgram(programObjID);
 
+//startdebugblock
   if (effect.getParameter("qMap") == null)
   {
-//startdebugblock
     c3dl.debug.logWarning('"qMap" is a required parameter for c3dl.effects.CARTOON');
-//closedebugblock
     return;
   }
+//closedebugblock
 
   var modelViewMatrix = c3dl.peekMatrix();
   c3dl.matrixMode(c3dl.PROJECTION);

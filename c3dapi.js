@@ -909,14 +909,14 @@ c3dl.WebGL = function ()
     var program = gl.createProgram();
 
     // it is possible createProgram failed.
+/*commenty
     if (program == null)
     {
-/*commenty
       c3dl.debug.logError("failed to create shader program");
-commenty*/
       return null;
     }
-
+commenty*/
+	
     var vertShader = gl.createShader(gl.VERTEX_SHADER);
     gl.shaderSource(vertShader, vertexShader);
 
@@ -5601,24 +5601,22 @@ c3dl.BoundingBox = function ()
     var rotateOnAxisMat = c3dl.makeZeroMatrix();
     
 //shouldn't remove ifs since they cause a return
+/*commenty
     if (!c3dl.isValidVector(axisVec))
     {
-/*commenty
       c3dl.debug.logWarning('Actor::rotateOnAxis() called with the first parameter not a vector');
-commenty*/
       return;
     }
     if (isNaN(angle))
     {
-/*commenty
       c3dl.debug.logWarning('Actor::rotateOnAxis() called with the second parameter not a number');
-commenty*/
       return;
     }
     if (angle == 0)
     {
       return;
     }
+commenty*/	
 
     // Create a proper Quaternion based on location and angle
     c3dl.axisAngleToQuat(axisVec, angle, rotateOnAxisQuat);
@@ -6872,21 +6870,19 @@ c3dl.Scene = function ()
    */
   this.getObj = function (indxNum)
   {
+/*commenty
     if (isNaN(indxNum))
     {
-/*commenty
       c3dl.debug.logWarning("Scene::getObj() called with a parameter that's not a number");
-commenty*/
       return null;
     }
     // Check if the index that was asked for is inside the bounds of our array
     if (indxNum < 0 || indxNum >= objList.length)
     {
-/*commenty
       c3dl.debug.logWarning("Scene::getObj() called with " + indxNum + ", which is not betwen 0 and " + objList.length);
-commenty*/
       return null;
     }
+commenty*/
 
     // We do this because we dont want outsiders modifying the object list,
     // just the object themselves (ie. changing position, orientation, etc)
@@ -7392,6 +7388,7 @@ commenty*/
     if (renderer != null && canvasTag != null)
     {
       // Initialize the renderer
+	  // This looks important not gonna remove
       if (!renderer.createRenderer(canvasTag))
       {
 /*commenty
@@ -8012,17 +8009,19 @@ c3dl.Texture = function ()
   */
   this.getAbsolutePath = function ()
   {
+/*commenty
     if (textureImage != null)
     {
+commenty*/
       return textureImage.src;
+/*commenty
     }
     else
     {
-/*commenty
       c3dl.debug.logError('getTexturePath() error - texture has not been setup.');
-commenty*/
       return false;
     }
+commenty*/
   }
 
   /** 
@@ -8361,14 +8360,14 @@ c3dl.hasCorrectDimensions = function (texture)
   // knows where to look first
   var isCorrect = false;
 
+  
+/*commenty
   // textures cannot have size 0 or 1.
   if (texture.width <= 1 || texture.height <= 1)
   {
 //we don't want to remove these ifs as they serve a purpose in this function besides debug
-/*commenty
     c3dl.debug.logWarning('Texture ' + texture.src + ' is too small.' + 'Dimensions are: ' +
     texture.width + "x" + texture.height + ". " + '<br/>Texture was resized.');
-commenty*/
   }
 
   // Texture width and height must be a power of 2. By performing a 
@@ -8380,19 +8379,20 @@ commenty*/
   // etc..
   else if ((texture.width & (texture.width - 1)) || (texture.height & (texture.height - 1)))
   {
-/*commenty
     c3dl.debug.logWarning('Texture ' + texture.src + ' must have a width and height of a power of 2.' + 
     'Dimensions are: ' + texture.width + "x" + texture.height + ". " + 
     'Dimensions must be something like: 2x2, 2x4, 4x4, 4x8, 8x8, 16x8, 16x16, etc..' + 
     '<br />Texture has been resized.');
-commenty*/
   }
   // if we didn't satisfy any of the conditionals, texture 
   // should be okay
   else
   {
+commenty*/
     isCorrect = true;
+/*commenty
   }
+commenty*/
   return isCorrect;
 }/*
   Copyright (c) 2008 Seneca College
@@ -10342,13 +10342,13 @@ c3dl.Geometry = function () {
    */
   this.render = function (glCanvas3D, scene) 
   {
+/*commenty
     if (glCanvas3D == null) 
 	{ //I don't think I should modify this if as it returns a value 
-/*commenty
       c3dl.debug.logWarning('Geometry::render() called with a null glCanvas3D');
-commenty*/
       return false;
     }
+commenty*/
     if (this.getPrimitiveSets()[0].getType() === "lines") {
       scene.getRenderer().renderLines(this.getPrimitiveSets()[0].getLines());
     }
@@ -11549,11 +11549,14 @@ c3dl.Collada.prototype.update = function (timeStep) {
 	{ //not blocking this if statement as the colladamanager conditional has nothing to do with debug
 /*commenty
         c3dl.debug.logError('You must call addModel("' + this.path + '"); before canvasMain.');
+        if (c3dl.ColladaManager.isFileLoaded(this.path)) 
+		{
 commenty*/
-        if (c3dl.ColladaManager.isFileLoaded(this.path)) {
             // get a copy of the scenegraph so we can modify it.
             this.sceneGraph = c3dl.ColladaManager.getSceneGraphCopy(this.path);
+/*commenty
         }
+commenty*/
     }
 }
 
@@ -13716,13 +13719,13 @@ c3dl.cartoon_callback = function (renderingObj)
 
   gl.useProgram(programObjID);
 
+/*commenty
   if (effect.getParameter("qMap") == null)
   {
-/*commenty
     c3dl.debug.logWarning('"qMap" is a required parameter for c3dl.effects.CARTOON');
-commenty*/
     return;
   }
+commenty*/
 
   var modelViewMatrix = c3dl.peekMatrix();
   c3dl.matrixMode(c3dl.PROJECTION);
@@ -14319,9 +14322,9 @@ c3dl.EffectTemplate = function ()
    */
   this.addFragmentShader = function (fragmentShader)
   {
+/*commenty
     if (this.isInitialized == false)
     {
-/*commenty
       if (fragmentShader && typeof(fragmentShader) == "string")
       {
 commenty*/
@@ -14332,8 +14335,8 @@ commenty*/
       {
         c3dl.debug.logWarning("Invalid argument passed to Effect's addFragmentShader().");
       }
-commenty*/
     }
+commenty*/
   }
 
   /**
@@ -14348,9 +14351,9 @@ commenty*/
    */
   this.addParameter = function (paramName, paramType, paramDefaultValue)
   {
+/*commenty
     if (this.isInitialized == false)
     {
-/*commenty
       if (paramName && typeof(paramName) == "string")
       {
 commenty*/
@@ -14383,8 +14386,8 @@ commenty*/
     else
     {
       c3dl.debug.logWarning("Effect addParameter(): cannot be called once an effect has been initialized.");
-commenty*/
     }
+commenty*/
   }
 
   /**
@@ -14398,9 +14401,9 @@ commenty*/
    */
   this.addVertexShader = function (vertexShader)
   {
+/*commenty
     if (this.isInitialized == false)
     {
-/*commenty
       if (vertexShader && typeof(vertexShader) == "string")
       {
 commenty*/
@@ -14410,9 +14413,9 @@ commenty*/
       else
       {
         c3dl.debug.logWarning("Invalid argument passed to Effect's addVertexShader().");
-      }
-commenty*/	  
+      }  
     }
+commenty*/
   }
 
   /**
@@ -14497,9 +14500,9 @@ commenty*/
    */
   this.setRenderingCallback = function (func)
   {
+/*commenty
     if (this.isInitialized == false)
     {
-/*commenty
       if (func instanceof Function)
       {
 commenty*/
@@ -14510,8 +14513,8 @@ commenty*/
       {
         c3dl.debug.logWarning("Invalid argument passed to Effect's setRenderingCB().");
       }
-commenty*/	  
     }
+commenty*/	
   }
 
   /**
